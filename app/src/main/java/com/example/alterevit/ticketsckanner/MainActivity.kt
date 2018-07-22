@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.alterevit.ticketsckanner.extension.replaceFragment
+import com.example.alterevit.ticketsckanner.ui.list_ticket.TicketListFragment
 import com.example.alterevit.ticketsckanner.ui.scanner.ScannerFragment
 import kotlinx.android.synthetic.main.main_ui.*
 
@@ -16,10 +17,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_ui)
         setSupportActionBar(toolbar)
         fab.setOnClickListener(this::clickOnFAb)
+        replaceFragment(TicketListFragment.DEFAULT_INSTANCE)
     }
 
     // TODO inject like interface
     private fun clickOnFAb(view: View) {
-        replaceFragment(ScannerFragment.DEFAULT_INSTANCE)
+        replaceFragment(ScannerFragment.DEFAULT_INSTANCE) {
+            addToBackStack(null)
+        }
     }
 }

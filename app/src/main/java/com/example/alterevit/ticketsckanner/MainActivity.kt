@@ -1,15 +1,19 @@
 package com.example.alterevit.ticketsckanner
 
-import android.app.Activity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.view.View
+import kotlinx.android.synthetic.main.main_ui.*
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_ui)
+        setSupportActionBar(toolbar)
+        fab.setOnClickListener(this::clickOnFAb)
     }
 
     override fun onResume() {
@@ -29,5 +33,10 @@ class MainActivity : Activity() {
     override fun onPause() {
         super.onPause()
         // qr_scanner.stopCamera()
+    }
+
+    // TODO inject like interface
+    private fun clickOnFAb(view: View) {
+
     }
 }
